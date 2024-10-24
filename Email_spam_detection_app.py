@@ -5,6 +5,7 @@ import string
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+import os
 
 # Download necessary NLTK resources
 nltk.download('punkt_tab')
@@ -40,12 +41,17 @@ def transform_Message(Message):
 
 
 
+# Define the paths for your model and vectorizer
+
+model_path = os.path.join('models', 'spam_detector_model.pkl')
+vectorizer_path = os.path.join('models', 'tfidf_vectorizer.pkl')
+
 # Load the model
-with open('models/spam_detector_model.pkl', 'rb') as file:
+with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
 # Load the vectorizer
-with open('models/tfidf_vectorizer.pkl', 'rb') as file:
+with open(vectorizer_path, 'rb') as file:
     vectorizer = pickle.load(file)
 
 # Title of the app
