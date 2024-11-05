@@ -64,7 +64,6 @@ if st.button('Predict'):
     if not user_input_mail.strip():
         st.write("Please enter an email content before predicting.")
     else:
-        else:
         # 1. Preprocess
         transformed_mail = ' '.join(transform_Message(user_input_mail))  # Join list into string
 
@@ -79,6 +78,7 @@ if st.button('Predict'):
             st.write("This email is **Spam**.")
         else:
             st.write("This email is **Not Spam**.")
+        
 
     
 
