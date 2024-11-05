@@ -59,15 +59,26 @@ st.title("Email Spam Detector")
 
 # Input text from user
 user_input_mail = st.text_area("Enter the email content to check if it's spam or not:")
+
+if st.button('Predict'):
+    if not user_input_mail.strip():
+        st.write("Please enter an email content before predicting.")
+    else:
+
 #    1. Preprocess
 transformed_mail = ' '.join(transform_Message(user_input_mail))  # Join list into string
 
-if st.button('Predict'):
+
 #        2. Vectorize by using vectorizer
+
     vector_input = vectorizer.transform([transformed_mail])
+
 #        3. Predict using the model
+
     prediction_result = model.predict(vector_input)[0]
+
 #        4. Display the model result
+
     if prediction_result == 1:
 
         st.write("This email is **Spam**.")
