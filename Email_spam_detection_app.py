@@ -64,27 +64,22 @@ if st.button('Predict'):
     if not user_input_mail.strip():
         st.write("Please enter an email content before predicting.")
     else:
+        else:
+        # 1. Preprocess
+        transformed_mail = ' '.join(transform_Message(user_input_mail))  # Join list into string
 
-#    1. Preprocess
-transformed_mail = ' '.join(transform_Message(user_input_mail))  # Join list into string
+        # 2. Vectorize using the vectorizer
+        vector_input = vectorizer.transform([transformed_mail])
 
+        # 3. Predict using the model
+        prediction_result = model.predict(vector_input)[0]
 
-#        2. Vectorize by using vectorizer
+        # 4. Display the model result
+        if prediction_result == 1:
+            st.write("This email is **Spam**.")
+        else:
+            st.write("This email is **Not Spam**.")
 
-    vector_input = vectorizer.transform([transformed_mail])
-
-#        3. Predict using the model
-
-    prediction_result = model.predict(vector_input)[0]
-
-#        4. Display the model result
-
-    if prediction_result == 1:
-
-        st.write("This email is **Spam**.")
-    else:
-
-        st.write("This email is **Not Spam**.")
     
 
 
